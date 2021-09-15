@@ -2,8 +2,9 @@ package com.github.arlekinside.filestorage.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,8 +15,10 @@ import java.util.Objects;
 public class File {
 
     @Id
-    private int id;
+    private String id;
+    @NotNull(message = "Name cannot be null")
     private String name;
+    @DecimalMin(value = "1", message = "Size cannot be 0")
     private int size;
     private List<String> tags;
 
@@ -33,11 +36,11 @@ public class File {
         this.tags = tags;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -70,7 +73,7 @@ public class File {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         File file = (File) o;
-        return id == file.id && size == file.size && name.equals(file.name) && Objects.equals(tags, file.tags);
+        return id.equals(file.id) && size == file.size && name.equals(file.name) && Objects.equals(tags, file.tags);
     }
 
     @Override
