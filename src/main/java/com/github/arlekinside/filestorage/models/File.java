@@ -7,6 +7,9 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Saved in ElasticSearch file's model
+ */
 @Document(indexName = "files")
 public class File {
 
@@ -15,6 +18,20 @@ public class File {
     private String name;
     private int size;
     private List<String> tags;
+
+    public File() {
+    }
+
+    public File(String name, int size) {
+        this.name = name;
+        this.size = size;
+    }
+
+    public File(String name, int size, List<String> tags) {
+        this.name = name;
+        this.size = size;
+        this.tags = tags;
+    }
 
     public int getId() {
         return id;
@@ -59,5 +76,15 @@ public class File {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, size, tags);
+    }
+
+    @Override
+    public String toString() {
+        return "File{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", size=" + size +
+                ", tags=" + tags +
+                '}';
     }
 }
