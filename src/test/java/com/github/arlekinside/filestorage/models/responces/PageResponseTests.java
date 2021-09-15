@@ -1,12 +1,12 @@
-package com.github.arlekinside.filestorage.models;
+package com.github.arlekinside.filestorage.models.responces;
 
+import com.github.arlekinside.filestorage.models.File;
+import com.github.arlekinside.filestorage.models.responses.PageResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Arrays;
 
-//@Component
-//@ConditionalOnProperty(prefix = "spring.profiles", name = "active", value = "dev")
 @SpringBootTest
 public class PageResponseTests {
 

@@ -1,4 +1,6 @@
-package com.github.arlekinside.filestorage.models;
+package com.github.arlekinside.filestorage.models.responses;
+
+import com.github.arlekinside.filestorage.models.File;
 
 import java.util.List;
 import java.util.Objects;
