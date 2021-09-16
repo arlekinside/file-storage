@@ -6,11 +6,13 @@ import com.github.arlekinside.filestorage.models.File;
 import com.github.arlekinside.filestorage.models.responses.PageResponse;
 import com.github.arlekinside.filestorage.models.responses.PostFileResponse;
 import com.github.arlekinside.filestorage.models.responses.SuccessResponse;
+import com.github.arlekinside.filestorage.services.FileNameAnalyzer;
 import com.github.arlekinside.filestorage.services.FileService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -18,14 +20,17 @@ import java.util.List;
 public class FileController {
 
     private final FileService service;
+    private final FileNameAnalyzer analyzer;
 
-    public FileController(FileService service) {
+    public FileController(FileService service, FileNameAnalyzer analyzer) {
         this.service = service;
+        this.analyzer = analyzer;
     }
 
     @PostMapping
     public @ResponseBody
     PostFileResponse addFile(@Valid @RequestBody File file) {
+        file.setTags(Collections.singletonList(analyzer.extensionToTag(file.getName())));
         return new PostFileResponse(service.save(file).getId());
     }
 
