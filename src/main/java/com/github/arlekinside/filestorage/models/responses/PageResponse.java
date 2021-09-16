@@ -1,5 +1,6 @@
 package com.github.arlekinside.filestorage.models.responses;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import com.github.arlekinside.filestorage.models.File;
 
 import java.util.List;
@@ -7,11 +8,13 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * API response model to GET /file
+ * API response model to GET /file request<br>
+ * <br>
+ * Use PageResponseBuilder to build custom page out of input collection
  */
 public class PageResponse {
 
-    private final int total;
+    private final long total;
     private final List<File> page;
 
     private PageResponse(PageResponseBuilder builder) {
@@ -19,7 +22,12 @@ public class PageResponse {
         this.page = builder.files;
     }
 
-    public int getTotal() {
+    public PageResponse(List<File> files, long total){
+        this.total = total;
+        this.page = files;
+    }
+
+    public long getTotal() {
         return total;
     }
 
@@ -48,6 +56,7 @@ public class PageResponse {
                 '}';
     }
 
+    @JsonIgnoreType
     public static class PageResponseBuilder {
 
         private int total = 0;

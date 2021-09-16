@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 /**
- * Api response model to POST /file
+ * Api response model to POST /file request
  */
 public class PostFileResponse {
 

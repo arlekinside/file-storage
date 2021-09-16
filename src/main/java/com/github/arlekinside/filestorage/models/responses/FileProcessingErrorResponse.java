@@ -2,6 +2,7 @@ package com.github.arlekinside.filestorage.models.responses;
 
 /**
  * File saving validation exception response <br>
+ * <br>
  * "Success" field's default value = false
  */
 public class FileProcessingErrorResponse {
