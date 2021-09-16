@@ -4,7 +4,7 @@
 <h3>Start-up</h3>
 
 - Configure ElasticSearch cluster on any desirable platform
-- Add application.properties file to src/main/resources.<br>
+- Add application.properties file to ``src/main/resources``.<br>
   It should look like this
 ````
 server.port=PORT # Optional. Default is 8080
@@ -12,6 +12,10 @@ spring.data.elasticsearch.client.reactive.endpoints=YOUR_DB_ENDPOINT
 spring.data.elasticsearch.client.reactive.username=YOUR_USERNAME
 spring.data.elasticsearch.client.reactive.password=YOUR_PASSWORD
 ````
+- Declare bean of type ``com.github.arlkinside.filestorage.services.FileNameAnalyzer``<br>
+that should map method arg's input string (filename) to filetype.<br><br>
+The other option is to declare bean of type ``com.github.arlekinside.filestorage.services.implementations.FileNameAnalyzerImpl``<br>
+with injected Map, where _key_ is _extension_ and _value_ is _filetype_ 
 - Launch the application with one of the supported scripts<br>
 `mvn spring-boot:run`
   
