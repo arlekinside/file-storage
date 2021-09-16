@@ -33,7 +33,7 @@ public class FileControllerAdvice {
     }
 
     @ExceptionHandler(TagsException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public @ResponseBody
     FileProcessingErrorResponse handleException(TagsException ex){
         return new FileProcessingErrorResponse(ex.getMessage());
