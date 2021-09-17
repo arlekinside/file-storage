@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="fileNameAnalyzer" class="com.github.arlekinside.filestorage.services.implementations.FileNameAnalyzerImpl">
+        <constructor-arg>
+            <map>
+                <entry key=".exe" value="application"/>
+                <entry key=".pdf" value="document"/>
+                <entry key=".doc" value="document"/>
+                <entry key=".docx" value="document"/>
+                <entry key=".mp3" value="document"/>
+                <entry key=".mp4" value="video"/>
+                <entry key=".wav" value="video"/>
+                <entry key=".avi" value="video"/>
+                <entry key=".zip" value="archive"/>
+                <entry key=".rar" value="archive"/>
+                <entry key=".txt" value="text"/>
+                <entry key=".png" value="image"/>
+                <entry key=".jpeg" value="image"/>
+                <entry key=".jpg" value="image"/>
+                <entry key=".gif" value="image"/>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>
